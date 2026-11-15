@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Gift,
   Sparkles,
@@ -8,17 +8,17 @@ import {
   Plus,
   Minus,
   ShoppingBag,
-} from 'lucide-react';
-import { motion } from 'motion/react';
-import { Language, translations } from '../data/translations';
+} from "lucide-react";
+import { motion } from "motion/react";
+import { Language, translations } from "../data/translations";
 import {
   Product,
   STORE_DISCOUNT_PERCENT,
   GIFT_CARD_PRICE_EGP,
-} from '../data/products';
-import { ImageWithLoader } from './ui/ImageWithLoader';
-import { WhatsAppButton } from './ui/WhatsAppButton';
-import { getDiscountedPrice, formatPrice } from '../utils/whatsapp';
+} from "../data/products";
+import { ImageWithLoader } from "./ui/ImageWithLoader";
+import { WhatsAppButton } from "./ui/WhatsAppButton";
+import { getDiscountedPrice, formatPrice } from "../utils/whatsapp";
 
 interface ProductCardProps {
   product: Product;
@@ -85,28 +85,31 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   orderHref,
 }) => {
   const t = translations[lang];
-  const productName = lang === 'ar' ? product.nameAr : product.nameEn;
-  const productSubtitle = lang === 'ar' ? product.subtitleAr : product.subtitleEn;
-  const productMaterial = lang === 'ar' ? product.materialAr : product.materialEn;
-  const productInclusions = lang === 'ar' ? product.inclusionsAr : product.inclusionsEn;
-  const badge = lang === 'ar' ? product.badgeAr : product.badgeEn;
+  const productName = lang === "ar" ? product.nameAr : product.nameEn;
+  const productSubtitle =
+    lang === "ar" ? product.subtitleAr : product.subtitleEn;
+  const productMaterial =
+    lang === "ar" ? product.materialAr : product.materialEn;
+  const productInclusions =
+    lang === "ar" ? product.inclusionsAr : product.inclusionsEn;
+  const badge = lang === "ar" ? product.badgeAr : product.badgeEn;
 
   const isSelected = selectedQuantity > 0;
   const activeQty = isSelected ? selectedQuantity : 1;
   const hasDiscount = STORE_DISCOUNT_PERCENT > 0;
   const activePiecePrice = getDiscountedPrice(
     product.originalPrice,
-    STORE_DISCOUNT_PERCENT
+    STORE_DISCOUNT_PERCENT,
   );
   const totalWithCard =
     activePiecePrice * activeQty + (includeGiftCard ? GIFT_CARD_PRICE_EGP : 0);
 
   const categoryLabel =
-    product.category === 'sets'
+    product.category === "sets"
       ? t.catSets
-      : product.category === 'earrings'
+      : product.category === "earrings"
         ? t.catEarrings
-        : product.category === 'bracelets'
+        : product.category === "bracelets"
           ? t.catBracelets
           : t.catNecklaces;
 
@@ -120,8 +123,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       whileHover={{ y: -6, transition: { duration: 0.2 } }}
       className={`bg-white dark:bg-stone-900 rounded-2xl border shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group ${
         isSelected
-          ? 'border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/35'
-          : 'border-stone-200/80 dark:border-stone-800 hover:border-amber-300 dark:hover:border-amber-500/70'
+          ? "border-amber-400 dark:border-amber-500 ring-2 ring-amber-400/35"
+          : "border-stone-200/80 dark:border-stone-800 hover:border-amber-300 dark:hover:border-amber-500/70"
       }`}
     >
       {/* Product Image Container with Built-In Loading UI */}
@@ -141,7 +144,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <span className="inline-flex items-center gap-1 text-[11px] font-extrabold tracking-wide px-2.5 py-1 rounded-md bg-rose-600 text-white shadow-sm">
                 <Tag className="w-3 h-3" />
                 <span>
-                  {lang === 'ar'
+                  {lang === "ar"
                     ? `${t.discountOff} ${STORE_DISCOUNT_PERCENT}%`
                     : `-${STORE_DISCOUNT_PERCENT}% ${t.discountOff}`}
                 </span>
@@ -170,10 +173,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Stainless Steel Watermark Guarantee */}
-        <div className="absolute bottom-3 left-3 z-20 bg-white/90 dark:bg-stone-900/90 backdrop-blur-xs text-[10px] font-semibold text-stone-800 dark:text-stone-200 px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1 pointer-events-none">
+        {/* <div className="absolute bottom-3 left-3 z-20 bg-white/90 dark:bg-stone-900/90 backdrop-blur-xs text-[10px] font-semibold text-stone-800 dark:text-stone-200 px-2.5 py-0.5 rounded-full shadow-xs flex items-center gap-1 pointer-events-none">
           <Sparkles className="w-3 h-3 text-amber-600 dark:text-amber-400" />
           <span>316L Stainless Steel</span>
-        </div>
+        </div> */}
       </div>
 
       {/* Product Info Body */}
@@ -215,8 +218,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <label
             className={`mt-2 flex items-start gap-2.5 p-2.5 rounded-xl border transition-all cursor-pointer select-none ${
               includeGiftCard
-                ? 'bg-amber-50/90 dark:bg-amber-950/40 border-amber-400 dark:border-amber-500 shadow-2xs'
-                : 'bg-stone-50/70 dark:bg-stone-800/60 border-stone-200 dark:border-stone-700 hover:border-amber-300 dark:hover:border-amber-500/70 hover:bg-amber-50/40 dark:hover:bg-stone-800'
+                ? "bg-amber-50/90 dark:bg-amber-950/40 border-amber-400 dark:border-amber-500 shadow-2xs"
+                : "bg-stone-50/70 dark:bg-stone-800/60 border-stone-200 dark:border-stone-700 hover:border-amber-300 dark:hover:border-amber-500/70 hover:bg-amber-50/40 dark:hover:bg-stone-800"
             }`}
           >
             <input
@@ -228,8 +231,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             <span
               className={`mt-0.5 w-4.5 h-4.5 rounded-md border flex items-center justify-center shrink-0 transition-colors ${
                 includeGiftCard
-                  ? 'bg-amber-500 border-amber-600 text-white'
-                  : 'bg-white dark:bg-stone-900 border-stone-300 dark:border-stone-600'
+                  ? "bg-amber-500 border-amber-600 text-white"
+                  : "bg-white dark:bg-stone-900 border-stone-300 dark:border-stone-600"
               }`}
             >
               {includeGiftCard && <Check className="w-3 h-3 stroke-[3]" />}
@@ -240,8 +243,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   <Heart
                     className={`w-3 h-3 ${
                       includeGiftCard
-                        ? 'text-amber-600 dark:text-amber-400 fill-amber-500'
-                        : 'text-amber-600 dark:text-amber-400'
+                        ? "text-amber-600 dark:text-amber-400 fill-amber-500"
+                        : "text-amber-600 dark:text-amber-400"
                     }`}
                   />
                   <span>{t.addGiftCardLabel}</span>
@@ -251,11 +254,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 </span>
               </div>
               <p className="text-[10px] text-stone-500 dark:text-stone-400 mt-0.5 leading-snug">
-                {includeGiftCard ? t.giftCardCheckedHint : t.giftCardUncheckedHint}
+                {includeGiftCard
+                  ? t.giftCardCheckedHint
+                  : t.giftCardUncheckedHint}
               </p>
               {includeGiftCard && (
                 <p className="text-[11px] font-bold text-amber-800 dark:text-amber-300 mt-1 font-mono">
-                  {t.totalWithCardLabel}: {formatPrice(totalWithCard, lang, t.priceCurrency)}
+                  {t.totalWithCardLabel}:{" "}
+                  {formatPrice(totalWithCard, lang, t.priceCurrency)}
                 </p>
               )}
             </div>
@@ -326,16 +332,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           <p className="text-[10px] text-stone-500 dark:text-stone-400 text-center italic">
             {includeGiftCard
-              ? lang === 'ar'
+              ? lang === "ar"
                 ? `✓ يشمل علبة قرص العسل + كارت الإهداء (+${GIFT_CARD_PRICE_EGP} ج.م)`
                 : `✓ Includes signature honeycomb box + gift card (+${GIFT_CARD_PRICE_EGP} EGP)`
-              : lang === 'ar'
-                ? '✓ يشمل علبة قرص العسل الفاخرة مجاناً'
-                : '✓ Includes signature honeycomb gift box'}
+              : lang === "ar"
+                ? "✓ يشمل علبة قرص العسل الفاخرة مجاناً"
+                : "✓ Includes signature honeycomb gift box"}
           </p>
         </div>
       </div>
     </motion.div>
   );
 };
-

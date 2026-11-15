@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div className="flex flex-col">
             <span className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100 font-serif-luxury group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-              {lang === "ar" ? "Freebie · فري بي" : "Freebie"}
+              {lang === "ar" ? " فري بي" : "Freebie"}
             </span>
             {/* <span className="text-xs text-amber-700 dark:text-amber-400 font-medium italic -mt-0.5 tracking-wide">
               {t.slogan}

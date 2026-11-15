@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     subtitleEn: '18K Gold Plated Pendant Necklace & Matching Huggie Earrings',
     subtitleAr: 'قلادة بدلاية هلال القمر وأقراط متناسقة مطلية بذهب عيار 18',
     originalPrice: 600,
-    materialEn: '316L Stainless Steel · 18K Gold PVD · Waterproof',
+    materialEn: '316L Stainless Steel ·· Waterproof',
     materialAr: 'ستانلس ستيل 316L · طلاء ذهب عيار 18 PVD · مقاوم للماء',
     image: '/assets/images/product_sets_gift_1794341553768.jpg',
     badgeEn: 'Best Seller Gift Set',

@@ -83,7 +83,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         className={primaryClass}
       >
         <MessageCircle className="w-5 h-5 fill-white text-white shrink-0" />
-        <span>{label}</span>
+        <span className="text-sm">{label}</span>
         {subLabel && (
           <span className="text-xs font-normal opacity-90">({subLabel})</span>
         )}
@@ -100,7 +100,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       className={primaryClass}
     >
       <MessageCircle className="w-5 h-5 fill-white text-white shrink-0" />
-      <span>{label}</span>
+      <span className="text-sm">{label}</span>
       {subLabel && (
         <span className="text-xs font-normal opacity-90">({subLabel})</span>
       )}
