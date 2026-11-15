@@ -1,13 +1,13 @@
-import React from 'react';
-import { MessageCircle } from 'lucide-react';
-import { motion } from 'motion/react';
+import React from "react";
+import { MessageCircle } from "lucide-react";
+import { motion } from "motion/react";
 
 interface WhatsAppButtonProps {
   onClick?: () => void;
   href?: string;
   label: string;
   subLabel?: string;
-  variant?: 'primary' | 'pill' | 'compact';
+  variant?: "primary" | "pill" | "compact";
   title?: string;
   className?: string;
 }
@@ -17,11 +17,11 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   href,
   label,
   subLabel,
-  variant = 'primary',
+  variant = "primary",
   title,
-  className = '',
+  className = "",
 }) => {
-  if (variant === 'pill') {
+  if (variant === "pill") {
     const pillClass = `flex items-center gap-1.5 px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#25D366] hover:bg-[#20bd5a] rounded-full shadow-sm hover:shadow transition-all whitespace-nowrap cursor-pointer ${className}`;
     if (href) {
       return (
@@ -45,7 +45,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     );
   }
 
-  if (variant === 'compact') {
+  if (variant === "compact") {
     const compactClass = `inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold rounded-xl shadow-xs transition-colors cursor-pointer ${className}`;
     if (href) {
       return (

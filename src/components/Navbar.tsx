@@ -1,10 +1,10 @@
-import React from 'react';
-import { Globe, Sparkles, Moon, Sun } from 'lucide-react';
-import { Language, translations } from '../data/translations';
-import { PACKAGING_ASSETS, STORE_DISCOUNT_PERCENT } from '../data/products';
-import { ImageWithLoader } from './ui/ImageWithLoader';
-import { WhatsAppButton } from './ui/WhatsAppButton';
-import { buildWhatsAppUrl } from '../utils/whatsapp';
+import React from "react";
+import { Globe, Sparkles, Moon, Sun } from "lucide-react";
+import { Language, translations } from "../data/translations";
+import { PACKAGING_ASSETS, STORE_DISCOUNT_PERCENT } from "../data/products";
+import { ImageWithLoader } from "./ui/ImageWithLoader";
+import { WhatsAppButton } from "./ui/WhatsAppButton";
+import { buildWhatsAppUrl } from "../utils/whatsapp";
 
 interface NavbarProps {
   lang: Language;
@@ -25,7 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const hasDiscount = STORE_DISCOUNT_PERCENT > 0;
 
   const generalGreeting =
-    lang === 'ar'
+    lang === "ar"
       ? `مرحباً فريبي! 👋\nأود الاستفسار عن هدايا فريبي وإكسسوارات الستانلس ستيل.`
       : `Hello Freebie! 👋\nI'd like to ask about Freebie gifts and stainless steel accessories.`;
   const whatsappHref = buildWhatsAppUrl(whatsappNumber, generalGreeting);
@@ -38,17 +38,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         {hasDiscount ? (
           <>
             <span className="font-extrabold uppercase tracking-wide bg-stone-900 text-amber-300 px-2 py-0.5 rounded text-[10px]">
-              {lang === 'ar'
+              {lang === "ar"
                 ? `خصم ${STORE_DISCOUNT_PERCENT}%`
                 : `${STORE_DISCOUNT_PERCENT}% OFF`}
             </span>
             <span className="hidden sm:inline font-semibold">
-              {lang === 'ar'
+              {lang === "ar"
                 ? `عرض خاص: خصم ${STORE_DISCOUNT_PERCENT}% على جميع القطع · المتجر قيد التجهيز والطلبات متاحة عبر واتساب`
                 : `Special Offer: ${STORE_DISCOUNT_PERCENT}% OFF all pieces · Orders open via WhatsApp (${t.comingSoonBadge})`}
             </span>
             <span className="sm:hidden font-semibold">
-              {lang === 'ar'
+              {lang === "ar"
                 ? `خصم ${STORE_DISCOUNT_PERCENT}% على جميع القطع · اطلب عبر واتساب`
                 : `${STORE_DISCOUNT_PERCENT}% OFF all pieces · Order via WhatsApp`}
             </span>
@@ -57,12 +57,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           <>
             <span className="font-semibold">{t.comingSoonBadge}:</span>
             <span className="hidden sm:inline">
-              {lang === 'ar'
-                ? 'المتجر قيد التجهيز · الطلبات المباشرة متاحة عبر واتساب مع تغليف خاص'
-                : 'Full store launching soon · Orders open via WhatsApp with signature gift packaging'}
+              {lang === "ar"
+                ? "المتجر قيد التجهيز · الطلبات المباشرة متاحة عبر واتساب مع تغليف خاص"
+                : "Full store launching soon · Orders open via WhatsApp with signature gift packaging"}
             </span>
             <span className="sm:hidden">
-              {lang === 'ar' ? 'الطلبات متاحة عبر الواتساب' : 'Orders open via WhatsApp'}
+              {lang === "ar"
+                ? "الطلبات متاحة عبر الواتساب"
+                : "Orders open via WhatsApp"}
             </span>
           </>
         )}
@@ -83,16 +85,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
           <div className="flex flex-col">
             <span className="text-2xl font-bold tracking-tight text-stone-900 dark:text-stone-100 font-serif-luxury group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors">
-              {lang === 'ar' ? 'Freebie · فري بي' : 'Freebie'}
+              {lang === "ar" ? "Freebie · فري بي" : "Freebie"}
             </span>
-            <span className="text-xs text-amber-700 dark:text-amber-400 font-medium italic -mt-0.5 tracking-wide">
+            {/* <span className="text-xs text-amber-700 dark:text-amber-400 font-medium italic -mt-0.5 tracking-wide">
               {t.slogan}
-            </span>
+            </span> */}
           </div>
         </a>
 
         {/* Zone 2: Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-stone-700 dark:text-stone-300">
+        {/* <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-stone-700 dark:text-stone-300">
           <a
             href="#categories"
             className="hover:text-amber-700 dark:hover:text-amber-400 transition-colors whitespace-nowrap"
@@ -123,7 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             {lang === 'ar' ? 'هدايا قادمة' : 'More Gifts Soon'}
           </a>
-        </nav>
+        </nav> */}
 
         {/* Zone 3: Top-Right Actions: WhatsApp Direct + Dark Mode Toggle + Language Switcher */}
         <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
@@ -131,27 +133,30 @@ export const Navbar: React.FC<NavbarProps> = ({
             variant="pill"
             href={whatsappHref}
             label={t.contactUs}
-            title={lang === 'ar' ? 'محادثة عبر واتساب' : 'Chat on WhatsApp'}
+            className="hidden lg:flex"
+            title={lang === "ar" ? "محادثة عبر واتساب" : "Chat on WhatsApp"}
           />
 
           {/* Dark Mode Toggle */}
           <button
             onClick={onToggleDark}
-            aria-label={
-              isDark ? 'Switch to light mode' : 'Switch to dark mode'
-            }
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
             title={
               isDark
-                ? lang === 'ar'
-                  ? 'الوضع النهاري'
-                  : 'Light Mode'
-                : lang === 'ar'
-                  ? 'الوضع الليلي'
-                  : 'Dark Mode'
+                ? lang === "ar"
+                  ? "الوضع النهاري"
+                  : "Light Mode"
+                : lang === "ar"
+                  ? "الوضع الليلي"
+                  : "Dark Mode"
             }
             className="w-9 h-9 flex items-center justify-center rounded-full bg-white dark:bg-stone-900 text-stone-800 dark:text-amber-400 border border-amber-300 dark:border-stone-700 hover:bg-amber-50 dark:hover:bg-stone-800 transition-colors shadow-xs cursor-pointer"
           >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {isDark ? (
+              <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
           </button>
 
           {/* Top-Right Language Switcher */}
@@ -161,7 +166,9 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-1.5 px-3.5 py-2 text-xs sm:text-sm font-bold bg-white dark:bg-stone-900 text-stone-900 dark:text-stone-100 border border-amber-300 dark:border-stone-700 rounded-full hover:bg-amber-50 dark:hover:bg-stone-800 hover:border-amber-400 transition-colors shadow-xs cursor-pointer"
           >
             <Globe className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span>{lang === 'en' ? 'العربية' : 'English'}</span>
+            <span className="hidden sm:flex">
+              {lang === "en" ? "العربية" : "English"}
+            </span>
           </button>
         </div>
       </div>

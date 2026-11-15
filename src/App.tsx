@@ -3,31 +3,31 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
-import { MessageCircle } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Language } from './data/translations';
-import { Navbar } from './components/Navbar';
-import { Hero } from './components/Hero';
-import { ProductCatalog } from './components/ProductCatalog';
-import { PackagingAndCardShowcase } from './components/PackagingAndCardShowcase';
-import { StainlessSteelPromise } from './components/StainlessSteelPromise';
-import { HappinessStories } from './components/HappinessStories';
-import { MoreGiftsComing } from './components/MoreGiftsComing';
-import { CustomerReviews } from './components/CustomerReviews';
-import { Footer } from './components/Footer';
-import { buildWhatsAppUrl } from './utils/whatsapp';
+import React, { useState, useEffect } from "react";
+import { MessageCircle } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Language } from "./data/translations";
+import { Navbar } from "./components/Navbar";
+import { Hero } from "./components/Hero";
+import { ProductCatalog } from "./components/ProductCatalog";
+import { PackagingAndCardShowcase } from "./components/PackagingAndCardShowcase";
+import { StainlessSteelPromise } from "./components/StainlessSteelPromise";
+import { HappinessStories } from "./components/HappinessStories";
+import { MoreGiftsComing } from "./components/MoreGiftsComing";
+import { CustomerReviews } from "./components/CustomerReviews";
+import { Footer } from "./components/Footer";
+import { buildWhatsAppUrl } from "./utils/whatsapp";
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>("en");
   const [isDark, setIsDark] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('freebie_theme') === 'dark';
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("freebie_theme") === "dark";
     }
     return false;
   });
   const [whatsappNumber] = useState<string>(
-    () => (import.meta.env.VITE_WHATSAPP_NUMBER as string | undefined) || ''
+    () => (import.meta.env.VITE_WHATSAPP_NUMBER as string | undefined) || "",
   );
   const [showFloatingWA, setShowFloatingWA] = useState<boolean>(false);
   const [hasSelectedItems, setHasSelectedItems] = useState<boolean>(false);
@@ -35,18 +35,18 @@ export default function App() {
   // Sync document direction and language attribute
   useEffect(() => {
     document.documentElement.lang = lang;
-    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
   }, [lang]);
 
   // Sync dark class on <html>
   useEffect(() => {
     const root = document.documentElement;
     if (isDark) {
-      root.classList.add('dark');
-      localStorage.setItem('freebie_theme', 'dark');
+      root.classList.add("dark");
+      localStorage.setItem("freebie_theme", "dark");
     } else {
-      root.classList.remove('dark');
-      localStorage.setItem('freebie_theme', 'light');
+      root.classList.remove("dark");
+      localStorage.setItem("freebie_theme", "light");
     }
   }, [isDark]);
 
@@ -59,12 +59,12 @@ export default function App() {
         setShowFloatingWA(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleLanguage = () => {
-    setLang((prev) => (prev === 'en' ? 'ar' : 'en'));
+    setLang((prev) => (prev === "en" ? "ar" : "en"));
   };
 
   const toggleDarkMode = () => {
@@ -72,21 +72,21 @@ export default function App() {
   };
 
   const handleExploreScroll = () => {
-    const el = document.getElementById('categories');
+    const el = document.getElementById("categories");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const handlePackagingScroll = () => {
-    const el = document.getElementById('packaging');
+    const el = document.getElementById("packaging");
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   const floatingGreeting =
-    lang === 'ar'
+    lang === "ar"
       ? `مرحباً فريبي! 👋\nأود الاستفسار عن إكسسوارات وهدايا فريبي.`
       : `Hello Freebie! 👋\nI'd like to ask about Freebie gifts & accessories.`;
   const floatingWaHref = buildWhatsAppUrl(whatsappNumber, floatingGreeting);
@@ -94,7 +94,7 @@ export default function App() {
   return (
     <div
       className={`min-h-screen flex flex-col bg-[#FAF8F5] dark:bg-stone-950 text-stone-900 dark:text-stone-100 selection:bg-amber-300 selection:text-stone-900 transition-colors ${
-        lang === 'ar' ? 'font-arabic-heading' : ''
+        lang === "ar" ? "font-arabic-heading" : ""
       }`}
     >
       {/* Navigation with Top-Right Language Switcher & Dark Mode Toggle */}
@@ -122,18 +122,13 @@ export default function App() {
         />
 
         {/* Special Packaging & Included Gift Card Details */}
-        <PackagingAndCardShowcase
-          lang={lang}
-        />
+        <PackagingAndCardShowcase lang={lang} />
 
         {/* Performance Promise: Stainless Steel 316L (positioned before HappinessStories) */}
         <StainlessSteelPromise lang={lang} />
 
         {/* Happiness Stories — Rotating Customer Testimonials */}
-        <HappinessStories
-          lang={lang}
-          whatsappNumber={whatsappNumber}
-        />
+        <HappinessStories lang={lang} whatsappNumber={whatsappNumber} />
 
         {/* Happiness & Cool Gifts Future Vision (Beyond Stainless Steel) */}
         <MoreGiftsComing lang={lang} />
@@ -158,8 +153,8 @@ export default function App() {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             className={`fixed bottom-6 ${
-              lang === 'ar' ? 'left-6' : 'right-6'
-            } z-50 flex items-center gap-2.5 px-4 py-3 bg-[#25D366] text-white font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}
+              lang === "ar" ? "left-6" : "right-6"
+            } lg:hidden z-50 flex items-center gap-2.5 px-4 py-3 bg-[#25D366] text-white font-bold text-sm rounded-full shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}
           >
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
@@ -167,7 +162,7 @@ export default function App() {
             </span>
             <MessageCircle className="w-5 h-5 fill-white" />
             <span className="hidden sm:inline">
-              {lang === 'ar' ? 'طلب فوري عبر واتساب' : 'Quick Order'}
+              {lang === "ar" ? "طلب فوري عبر واتساب" : "Quick Order"}
             </span>
           </motion.a>
         )}
