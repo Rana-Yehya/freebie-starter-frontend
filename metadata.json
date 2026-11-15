@@ -1,0 +1,8 @@
+{
+  "name": "Freebie — happiness...always here",
+  "description": "Boutique gifts and timeless stainless steel accessories that last forever. Spreading happiness, one surprise at a time.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
