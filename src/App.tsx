@@ -113,6 +113,8 @@ export default function App() {
           onExploreClick={handleExploreScroll}
           onPackagingClick={handlePackagingScroll}
         />
+        {/* Performance Promise: Stainless Steel 316L (positioned before HappinessStories) */}
+        <StainlessSteelPromise lang={lang} />
 
         {/* 4 Product Categories (Sets, Earrings, Bracelets, Necklaces) with Pagination & WhatsApp ordering */}
         <ProductCatalog
@@ -124,17 +126,14 @@ export default function App() {
         {/* Special Packaging & Included Gift Card Details */}
         <PackagingAndCardShowcase lang={lang} />
 
-        {/* Performance Promise: Stainless Steel 316L (positioned before HappinessStories) */}
-        <StainlessSteelPromise lang={lang} />
-
         {/* Happiness Stories — Rotating Customer Testimonials */}
-        <HappinessStories lang={lang} whatsappNumber={whatsappNumber} />
+        {/* <HappinessStories lang={lang} whatsappNumber={whatsappNumber} /> */}
 
         {/* Happiness & Cool Gifts Future Vision (Beyond Stainless Steel) */}
         <MoreGiftsComing lang={lang} />
 
         {/* Customer Reviews — Auto-Sliding Carousel at Bottom of Page */}
-        <CustomerReviews lang={lang} />
+        {/* <CustomerReviews lang={lang} /> */}
       </main>
 
       {/* Footer with Clickable Social Icons (Facebook, Instagram, TikTok) */}
